@@ -1,0 +1,148 @@
+body {
+    display: flex;
+    margin: 0;
+    background: linear-gradient(to right, #4e71ff, #b32ff1);
+}
+
+.title {
+    width: 45vw;
+    height: 100vh;
+    background-color: white;
+    border-top-right-radius: 99px;
+    border-bottom-right-radius: 99px;
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.first-title {
+    margin: 0px;
+    padding-left: 20px;
+    font-size: 35px;
+}
+
+.lighter-title {
+    font-family: "Poppins", sans-serif;
+    font-weight: 300;
+    font-style: normal;
+}
+
+.bolder-title {
+    font-family: "Poppins", sans-serif;
+    font-style: normal;
+    font-weight: 700;
+}
+
+.second-title {
+    color: #4e71ff;
+    font-size: 150px;
+    margin: 0px;
+    text-align: center;
+    line-height: 1;
+}
+
+.third-title {
+    color: #4e71ff;
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+    margin: 0px;
+    text-align: center;
+}
+
+.container {
+    width: 55vw;
+    height: 100vh;
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.logo-container {
+    min-width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo {
+    width: 50px;
+    height: 50px;
+    background-color: white;
+    color: #4e71ff;
+    font-family: 'Poppins', sans-serif;
+    font-size: 32px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 360px;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-width: 100%;
+}
+
+.input {
+    font-family: "Poppins", sans-serif;
+    border-radius: 180px;
+    width: 100%;
+    height: 40px;
+    padding-left: 20px;
+    border: none;
+    outline: none;
+    box-sizing: border-box;
+}
+
+.outer-input {
+    position: relative;
+    width: 70%;
+    height: auto;
+    border: 2px solid white;
+    border-radius: 180px;
+    margin: 6px 0;
+    box-sizing: border-box;
+    overflow: hidden;
+    padding: 5px;
+}
+
+.forgot {
+    font-family: "Poppins", sans-serif;
+    color: white;
+    margin: 3px;
+}
+
+.button {
+    font-family: "Poppins", sans-serif;
+    font-weight: bold;
+    font-size: 24px;
+    background-color: white;
+    color: #4e71ff;
+    border-radius: 180px;
+    width: auto;
+    height: 40px;
+    padding-right: 45px;
+    padding-left: 45px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+.sign-up {
+    font-family: "Poppins", sans-serif;
+    font-size: 24px;
+    color: white;
+    margin-top: 20px;
+}
