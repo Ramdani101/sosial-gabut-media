@@ -1,0 +1,317 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="{%static 'profileinfo/css/styles.css'%}">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+            rel="stylesheet">
+        <title>Profile</title>
+    </head>
+
+    <body>
+        <nav class="navbar">
+            <div class="nav-left-container">
+                <div class="logo">
+                    S
+                </div>
+                <div class="search-container">
+                    <svg class="svg-icon" xmlns="http://www.w3.org/2000/svg"
+                        xmlns:xlink="http://www.w3.org/1999/xlink"
+                        data-name="Layer 1" preserveAspectRatio="xMidYMid meet"
+                        version="1.0" viewBox="-9.5 -8.5 205.0 225.3"
+                        zoomAndPan="magnify" style="fill: rgb(255, 255, 255);"
+                        original_string_length="490" width="34.35188018203181px"
+                        height="37.711644910414165px"><g
+                            id="__id1_szw24o237"><path
+                                d="M193.26,203.52,146.1,141.16A84.17,84.17,0,1,0,134,152l46.35,61.3a8.13,8.13,0,1,0,13-9.81ZM13.62,84.17a70.55,70.55,0,1,1,70.54,70.54A70.55,70.55,0,0,1,13.62,84.17Z"
+                                style="fill: inherit;" /></g></svg>
+                    <input type="text" class="search"
+                        placeholder="Search Sigma">
+                </div>
+            </div>
+            <div class="nav-links-center">
+                <span class="active-page">
+                    <svg class="svg-icon" xmlns="http://www.w3.org/2000/svg"
+                        xmlns:xlink="http://www.w3.org/1999/xlink" data-name="1"
+                        preserveAspectRatio="xMidYMid meet" version="1.0"
+                        viewBox="-0.9 -0.3 57.8 54.2" zoomAndPan="magnify"
+                        style="fill: rgb(255, 255, 255);"
+                        original_string_length="618" width="51.21050127517615px"
+                        height="47.67232118707306px"><g
+                            id="__id2_szw24o237"><path
+                                d="M52.89,28.039H50.6V51.521a2.434,2.434,0,0,1-2.552,2.28H34.52V37.79a1.673,1.673,0,0,0-1.672-1.673H23.033a1.672,1.672,0,0,0-1.672,1.673V53.8H7.832A2.418,2.418,0,0,1,5.29,51.529V28.039H2.99c-2.549,0-3.93-2.4-2.26-3.94L25.9.83a3.505,3.505,0,0,1,4.54.009Q42.8,12.473,55.171,24.107C56.81,25.662,55.43,28.039,52.89,28.039Z"
+                                style="fill: inherit;" /></g></svg>
+                    <svg class="active-pointer"
+                        style="stroke: rgb(255, 255, 255); fill: rgb(255, 255, 255); width: 22px; height: 3px;"><path
+                            d="M0,3L43.76895244905222,3" stroke-linecap="butt"
+                            stroke-width="27.816638370118667" fill="none"
+                            pointer-events="auto" opacity="0" class="_682gpw"
+                            style="touch-action: pan-x pan-y pinch-zoom;"></path><g><path
+                                d="M0,3L43.76895244905222,3"
+                                stroke-linecap="butt" stroke-width="6"
+                                fill="none"
+                                pointer-events="none"></path></g></svg>
+                </span>
+                <span><svg class="svg-icon" xmlns="http://www.w3.org/2000/svg"
+                        xmlns:xlink="http://www.w3.org/1999/xlink"
+                        preserveAspectRatio="xMidYMid meet" version="1.0"
+                        viewBox="24.0 30.5 53.0 60.1" zoomAndPan="magnify"
+                        style="fill: rgb(255, 255, 255);"
+                        original_string_length="795" width="48.42822175859445px"
+                        height="54.805600755611px"><g id="__id3_szw24o237"><path
+                                d="m48.8 40.9c3.3 2.1 5.6 5.6 6 9.6 1.3 0.6 2.8 1 4.4 1 5.8 0 10.5-4.7 10.5-10.5s-4.7-10.5-10.5-10.5c-5.7 0.1-10.4 4.7-10.4 10.4zm-6.9 21.4c5.8 0 10.5-4.7 10.5-10.5s-4.7-10.5-10.5-10.5-10.5 4.7-10.5 10.5 4.7 10.5 10.5 10.5zm4.4 0.7h-8.9c-7.4 0-13.4 6-13.4 13.4v11.1l0.7 0.2c7 2.2 13.2 2.9 18.2 2.9 9.8 0 15.5-2.8 15.9-3l0.7-0.4h0.1v-10.8c0.1-7.4-5.9-13.4-13.3-13.4zm17.3-10.8h-8.8c-0.1 3.5-1.6 6.7-4 9 6.6 2 11.4 8 11.4 15.2v3.3c8.7-0.3 13.7-2.8 14-2.9l0.7-0.4h0.1v-10.8c0-7.4-6-13.4-13.4-13.4z"
+                                style="fill: inherit;" /></g></svg></span>
+                <span><svg class="svg-icon" xmlns="http://www.w3.org/2000/svg"
+                        xmlns:xlink="http://www.w3.org/1999/xlink"
+                        preserveAspectRatio="xMidYMid meet" version="1.0"
+                        viewBox="8.0 14.0 48.2 36.8" zoomAndPan="magnify"
+                        style="fill: rgb(255, 255, 255);"
+                        original_string_length="834" width="62.04662409152659px"
+                        height="47.71949452857408px"><g
+                            id="__id4_szw24o237"><path
+                                d="M38 14L30.7 14 27.4 20.3 34.3 20.3z"
+                                style="fill: inherit;" /></g><g
+                            id="__id5_szw24o237"><path
+                                d="M48.8 14L41.6 14 38.3 20.3 45.1 20.3z"
+                                style="fill: inherit;" /></g><g
+                            id="__id6_szw24o237"><path
+                                d="M55.9 14L52.1 14 49.2 20.3 55.9 20.3z"
+                                style="fill: inherit;" /></g><g
+                            id="__id7_szw24o237"><path
+                                d="M27 14.1L8 14.1 8 15.9 8 20.3 23.6 20.3z"
+                                style="fill: inherit;" /></g><g
+                            id="__id8_szw24o237"><path
+                                d="m8.1 47.5c0 1.8 1.6 3.3 3.6 3.3h40.9c2 0 3.6-1.5 3.6-3.3v-23h-48c-0.1-0.1-0.1 23-0.1 23zm17.9-13.1c0-1.8 1.4-2.7 3.2-1.8l7.6 3.5c1.8 0.8 1.8 2.2 0 3l-7.6 3.5c-1.8 0.8-3.2 0-3.2-1.8v-6.4z"
+                                style="fill: inherit;" /></g></svg></span>
+                <span><img src="{%static 'profileinfo/image/marketplace.png' %}"
+                        class="image-icon"></span>
+                <span><svg class="svg-icon" xmlns="http://www.w3.org/2000/svg"
+                        xmlns:xlink="http://www.w3.org/1999/xlink"
+                        data-name="Layer 1" preserveAspectRatio="xMidYMid meet"
+                        version="1.0" viewBox="1.5 0.6 61.0 61.0"
+                        zoomAndPan="magnify" style="fill: rgb(255, 255, 255);"
+                        original_string_length="4372"
+                        width="59.78944296974851px"
+                        height="59.78944296974851px"><g
+                            id="__id9_szw24o237"><path
+                                d="M18.68,27.67c1.07,.79,2.39,1.14,3.69,1.06,.05,0,.11,0,.16-.01,.2-.02,.41-.05,.61-.09,.08-.02,.15-.03,.23-.05,.09-.02,.18-.05,.27-.08-.02-.1-.03-.2-.06-.3,0-.02,0-.05-.01-.07-.11-.56-.19-1.12-.19-1.68,0-2.58,1.16-5.01,3.11-6.63-1.03-1.4-2.7-2.26-4.5-2.26-3.08,0-5.59,2.52-5.59,5.61,0,1.85,.9,3.48,2.29,4.5Z"
+                                style="fill: inherit;" /></g><g
+                            id="__id10_szw24o237"><path
+                                d="M31.45,35.02h0s-.02,0-.03,0h0s.02,0,.03,0Z"
+                                style="fill: inherit;" /></g><g
+                            id="__id11_szw24o237"><path
+                                d="M28.72,30.98c.21,.15,.43,.29,.66,.41,.01,0,.03,.01,.04,.02,1.59,.81,3.55,.81,5.15,0,.01,0,.03-.01,.04-.02,.23-.12,.45-.26,.66-.41,1.41-1.02,2.33-2.66,2.33-4.53,0-3.09-2.52-5.61-5.61-5.61s-5.61,2.52-5.61,5.61c0,1.86,.92,3.51,2.33,4.53Z"
+                                style="fill: inherit;" /></g><g
+                            id="__id12_szw24o237"><path
+                                d="M24.41,31.89c.12-.08,.24-.16,.37-.23,.08-.05,.16-.11,.25-.16-.06-.08-.11-.15-.16-.23-.13,.05-.27,.08-.4,.11-.13,.04-.27,.08-.4,.12-.19,.05-.38,.08-.57,.11-.16,.03-.31,.06-.48,.08-.09,.01-.18,0-.27,.02-.25,.02-.5,.05-.76,.05-.97,0-1.91-.17-2.78-.47-.02,0-.04-.02-.06-.02-.25-.09-.5-.19-.74-.3-.09-.04-.17-.08-.25-.12-.18-.09-.36-.19-.54-.29-.06-.04-.12-.06-.18-.1-2.31,.72-3.93,2.88-3.93,5.35v3.55c0,1.13,.91,2.05,2.04,2.05h4.95v-2.33c0-1.02,.2-1.99,.53-2.91,0-.02,.01-.03,.02-.05,.25-.67,.57-1.29,.97-1.88,.03-.04,.05-.07,.08-.11,.25-.35,.52-.69,.82-1,.02-.02,.04-.05,.07-.07,.15-.15,.3-.3,.46-.44,.07-.07,.15-.13,.23-.19,.24-.2,.5-.39,.76-.56Z"
+                                style="fill: inherit;" /></g><g
+                            id="__id13_szw24o237"><path
+                                d="M40.63,26.45c0,.56-.07,1.12-.19,1.68,0,.02,0,.05-.01,.07-.02,.1-.03,.2-.06,.3,.09,.03,.18,.06,.26,.08,.08,.02,.15,.04,.23,.05,.2,.04,.4,.07,.61,.09,.05,0,.11,0,.17,.01,1.29,.08,2.61-.27,3.68-1.06,1.38-1.02,2.29-2.65,2.29-4.5,0-3.09-2.51-5.61-5.59-5.61-1.81,0-3.47,.86-4.5,2.26,1.95,1.62,3.11,4.05,3.11,6.63Z"
+                                style="fill: inherit;" /></g><g
+                            id="__id14_szw24o237"><path
+                                d="M32,.63C15.18,.63,1.5,14.31,1.5,31.13s13.68,30.5,30.5,30.5,30.5-13.68,30.5-30.5S48.82,.63,32,.63Zm21.5,38.73c0,2.79-2.26,5.05-5.04,5.05h-5.3c-.72,1.91-2.56,3.28-4.72,3.28h-12.89c-2.16,0-3.99-1.37-4.72-3.28h-5.3c-2.78,0-5.04-2.27-5.04-5.05v-3.55c0-3.23,1.82-6.12,4.55-7.58-1.04-1.42-1.66-3.16-1.66-5.05,0-4.75,3.85-8.61,8.59-8.61,2.9,0,5.55,1.46,7.12,3.79,.91-.33,1.88-.51,2.9-.51s1.99,.19,2.9,.51c1.57-2.34,4.22-3.79,7.12-3.79,4.74,0,8.59,3.86,8.59,8.61,0,1.89-.62,3.63-1.66,5.05,2.73,1.47,4.55,4.35,4.55,7.58v3.55Z"
+                                style="fill: inherit;" /></g><g
+                            id="__id15_szw24o237"><path
+                                d="M39.4,35.76c-.16-.21-.33-.41-.51-.59-.03-.03-.06-.06-.09-.09-.17-.16-.35-.32-.54-.46-.06-.04-.12-.09-.18-.13-.18-.12-.36-.23-.55-.33-.09-.05-.18-.09-.27-.13-.18-.08-.36-.16-.54-.22-.05-.02-.11-.03-.16-.05-.06,.04-.13,.06-.19,.1-.23,.13-.46,.25-.69,.37-.07,.03-.15,.07-.22,.11-.83,.36-1.73,.6-2.68,.68-.01,0-.02,0-.03,0l-.16,.02h0c-.07,0-.14,.01-.19,.01s-.09,0-.13-.01c-.09,0-.17,.01-.26,.01s-.17-.01-.26-.01c-.04,0-.09,.01-.13,.01-.05,0-.12,0-.19-.01h0s-.05,0-.05,0c0,0,0,0,0,0h-.1s-.02-.02-.03-.02c-.94-.08-1.84-.32-2.68-.68-.08-.03-.15-.07-.22-.11-.24-.11-.47-.23-.69-.37-.06-.04-.13-.06-.19-.1-.05,.02-.11,.03-.16,.05-.19,.06-.37,.14-.54,.22-.09,.04-.18,.09-.27,.13-.19,.1-.38,.21-.55,.33-.06,.04-.12,.09-.18,.13-.19,.14-.37,.29-.54,.46-.03,.03-.06,.06-.09,.09-.18,.19-.36,.38-.51,.59,0,0,0,.01-.01,.02-.69,.94-1.09,2.09-1.09,3.31v3.55c0,1.13,.92,2.05,2.05,2.05h12.89c1.13,0,2.05-.92,2.05-2.05v-3.55c0-1.23-.4-2.38-1.09-3.31,0,0,0-.01-.01-.02Z"
+                                style="fill: inherit;" /></g><g
+                            id="__id16_szw24o237"><path
+                                d="M46.57,30.46c-.06,.04-.12,.06-.18,.1-.17,.1-.35,.2-.53,.29-.09,.04-.17,.08-.26,.12-.24,.11-.48,.21-.73,.3-.02,0-.05,.02-.07,.03-.87,.3-1.8,.47-2.78,.47-.27,0-.53-.03-.8-.05-.08,0-.15,0-.23-.01-.16-.02-.32-.05-.49-.08-.19-.03-.38-.06-.56-.11-.14-.03-.27-.08-.41-.12-.13-.04-.27-.07-.4-.11-.05,.08-.11,.15-.16,.23,.09,.05,.16,.11,.25,.16,.12,.07,.25,.15,.37,.23,.27,.17,.52,.36,.76,.56,.08,.06,.15,.12,.23,.19,.16,.14,.31,.29,.46,.44,.02,.02,.04,.05,.07,.07,.3,.31,.57,.65,.82,1,.03,.04,.05,.07,.08,.11,.4,.58,.72,1.21,.97,1.88,0,.02,.01,.03,.02,.05,.33,.92,.53,1.89,.53,2.91v2.33h4.95c1.12,0,2.04-.92,2.04-2.05v-3.55c0-2.47-1.62-4.63-3.93-5.35Z"
+                                style="fill: inherit;" /></g></svg></span>
+            </div>
+            <div class="nav-links-right">
+                <span><svg class="svg-icon-notification"
+                        xmlns="http://www.w3.org/2000/svg"
+                        xmlns:xlink="http://www.w3.org/1999/xlink"
+                        preserveAspectRatio="xMidYMid meet" version="1.0"
+                        viewBox="6.0 4.0 34.0 40.0" zoomAndPan="magnify"
+                        style="fill: rgb(255, 255, 255);"
+                        original_string_length="476"
+                        width="42.456446636261504px"
+                        height="49.895396687914165px"><g
+                            id="__id17_szw24o237"><path
+                                d="M23 44c2.21 0 4-1.79 4-4h-8c0 2.21 1.79 4 4 4zm13-12v-11c0-6.15-4.27-11.28-10-12.64v-1.36c0-1.66-1.34-3-3-3s-3 1.34-3 3v1.36c-5.73 1.36-10 6.49-10 12.64v11l-4 4v2h34v-2l-4-4z"
+                                style="fill: inherit;" /></g></svg></span>
+                <span><img
+                        src="{%static 'profileinfo/image/dummyprofile.webp' %}"
+                        class="image-icon-rounded"></span>
+            </div>
+        </nav>
+        <div class="main-container">
+            <div class="banner-container">
+                <img src="{%static 'profileinfo/image/dummybanner.jpg' %}"
+                    class="profile-banner" alt>
+                <div class="profile-info">
+                    <div class="profile-data">
+                        <img
+                            src="{%static 'profileinfo/image/dummyprofile.webp' %}"
+                            class="profile-picture">
+                        <div class>
+                            <h1>Raymond Ghin</h1>
+                            <p>123 Friends</p>
+                        </div>
+                    </div>
+                    <button class=" addfriend-button">Add
+                        Friend</button>
+                    <button class="display-none already-friend">
+                        <div class="button-content">
+                            <img
+                                src="{%static 'profileinfo/image/friends.png' %}"
+                                class="button-icon">
+                            Teman
+                        </div>
+                        <img src="{%static 'profileinfo/image/checklist.png' %}"
+                            class="button-icon">
+                    </button>
+                </div>
+            </div>
+            <div class="selection-container">
+                <button class="selection-active">Post's</button>
+                <button class="selection-inactive">Friend</button>
+            </div>
+            <div class="display-none post-box ">
+                <div class="post-container">
+                    <div class="post-edit">
+                        <p></p>
+                        <p></p>
+                        <p></p>
+                    </div>
+                    <div class="post-profile">
+                        <img
+                            src="{%static 'profileinfo/image/dummyprofile.webp' %}"
+                            class="image-icon-rounded">
+                        <div class="post-data">
+                            <h1 class="post-name">Aristoteles</h1>
+                            <p class="post-time">12h</p>
+                        </div>
+                    </div>
+                    <div class="post-description">
+                        <p>
+                            {% lorem 20 w random %}
+                        </p>
+                    </div>
+                    <div class="post-action">
+                        <div class="post-action-child">
+                            <svg class="action-button"
+                                xmlns="http://www.w3.org/2000/svg"
+                                xmlns:xlink="http://www.w3.org/1999/xlink"
+                                preserveAspectRatio="xMidYMid meet"
+                                version="1.0" viewBox="0.0 -3.1 488.5 464.2"
+                                zoomAndPan="magnify"
+                                style="fill: rgb(166, 166, 166);"
+                                original_string_length="1754"
+                                width="27.87671140325449px"
+                                height="26.457533368179714px"><g
+                                    id="__id26_s2szj1cwxj"><path
+                                        d="M485.440918,217.4516754l-37.1679688,194.3686371c-5.453125,28.5185547-30.4853516,49.2167969-59.5195312,49.2167969 H182.5239258c-10.3447876,0-20.2749023-2.6702271-29.0145874-7.6758423 c-5.8966675-3.3773193-9.515686-9.6754761-9.515686-16.4708862V199.1891632c0-7.2915039,4.1589966-13.9716797,10.7440186-17.1027222 c6.3883057-3.0375366,12.4779663-6.5971069,18.2403564-10.6733398c8.8525391-6.2617188,25.3300781-17.9169922,35.2900391-38.8720703 c3.6010742-7.5756836,7.2397461-19.3066406,8.7099609-71.1113281c0.4921875-17.3413086,0.6079102-34.824707,0.3442383-51.9638672 c-0.0566406-3.6782231,2.5629883-6.8544927,6.1845703-7.4990239c0.109375-0.0205078,0.2817383-0.0576172,0.5029297-0.1044922 c14.8139648-3.1118164,42.9174805-5.0083008,64.6655273,17.2504883c19.0742188,19.5214825,20.75,46.7236328,20.8925781,51.9785156 c0.0019531,0.0678711,0.0029297,0.1352539,0.0029297,0.203125v81.3774414h122.3037109 c16.3134766,0,31.6328125,7.2104492,42.0292969,19.7827148C484.2993164,185.027359,488.5053711,201.4277496,485.440918,217.4516754z M92.3303223,178.2277374c-1.149231-0.1414795-2.3140259-0.2203979-3.493042-0.2203979H29.6918335 C13.3198242,178.0073395,0,191.9555817,0,209.1006012v207.4384613c0,16.3218994,12.0735474,29.7365723,27.3573608,30.9885864 c1.149231,0.1414795,2.3140259,0.2203979,3.493042,0.2203979h59.1453857c16.3720093,0,29.6918335-13.9482422,29.6918335-31.0932617 V209.2163239C119.6876221,192.8944244,107.6141357,179.4798126,92.3303223,178.2277374z"
+                                        style="fill: inherit;" /></g></svg>
+                            <p class="post-counter">11</p>
+
+                        </div>
+                        <div class="post-action-child">
+                            <img class="action-button"
+                                src="{%static 'home/image/comment.png' %}"
+                                class="post-image-icon">
+                            <p class="post-counter">11</p>
+                        </div>
+                        <div class="post-action-child">
+                            <svg class="action-button"
+                                xmlns="http://www.w3.org/2000/svg"
+                                xmlns:xlink="http://www.w3.org/1999/xlink"
+                                preserveAspectRatio="xMidYMid meet"
+                                version="1.0" viewBox="-4.0 -0.6 488.9 449.2"
+                                zoomAndPan="magnify"
+                                style="fill: rgb(166, 166, 166);"
+                                original_string_length="1319"
+                                width="28.660854228520037px"
+                                height="26.31587524618658px"><g
+                                    id="__id28_s2szj1cwxj"><path
+                                        d="M11.2157049,448.6324158c-0.3994141,0-0.8022461-0.03125-1.2055664-0.0966797 c-3.1240239-0.5078125-5.5927739-2.921875-6.1708989-6.0332031c-0.8227539-4.4306641-7.8310547-44.7773438-0.59375-96.3847656 c4.1176758-29.359375,12.0556641-57.1533203,23.5947266-82.6113281c14.290041-31.527832,34.1943359-59.6088867,59.159668-83.4628906 c55.4902267-53.0273438,120.0385666-70.7558594,166.6464844-76.0024414V7.5000911 c0-2.9941406,1.7802734-5.7011719,4.5302734-6.8867188c2.7490234-1.1860352,5.9404297-0.6220703,8.1171875,1.4321288 l217.2128906,204.9960938c1.5019531,1.4169922,2.3525391,3.3901367,2.3525391,5.4545898s-0.8505859,4.0375977-2.3525391,5.4541016 L265.2938232,422.9566345c-2.1767578,2.0546875-5.3681641,2.6201172-8.1171875,1.4326172 c-2.7490234-1.1855469-4.5302734-3.8925781-4.5302734-6.8867188V302.9839783 c-42.3925781,0.8535156-82.6425781,10.9150391-119.7548828,29.9472656 c-64.6166916,33.1386719-99.8603439,84.2929688-115.1176682,111.8349609 C16.4383602,447.1773376,13.9095526,448.6324158,11.2157049,448.6324158z"
+                                        style="fill: inherit;" /></g></svg>
+                            <p class="post-counter">11</p>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="friend-box">
+                <div class="profile-card">
+                    <div class="friend-profile-info">
+                        <img
+                            src="{%static 'profileinfo/image/dummyprofile.webp' %}"
+                            class="friend-profile-picture">
+                        <div class="profile-card-data">
+                            <h1>Raymond Ghin</h1>
+                            <p>123 Friends</p>
+                        </div>
+                    </div>
+                    <button>Add Friend</button>
+                    <img src="{%static 'profileinfo/image/checklist.png' %}"
+                        class="display-none" alt>
+                </div>
+                <div class="profile-card">
+                    <div class="friend-profile-info">
+                        <img
+                            src="{%static 'profileinfo/image/dummyprofile.webp' %}"
+                            class="friend-profile-picture">
+                        <div class="profile-card-data">
+                            <h1>Raymond Ghin</h1>
+                            <p>123 Friends</p>
+                        </div>
+                    </div>
+                    <button>Add Friend</button>
+                    <img src="{%static 'profileinfo/image/checklist.png' %}"
+                        class="display-none" alt>
+                </div>
+                <div class="profile-card">
+                    <div class="friend-profile-info">
+                        <img
+                            src="{%static 'profileinfo/image/dummyprofile.webp' %}"
+                            class="friend-profile-picture">
+                        <div class="profile-card-data">
+                            <h1>Raymond Ghin</h1>
+                            <p>123 Friends</p>
+                        </div>
+                    </div>
+                    <button>Add Friend</button>
+                    <img src="{%static 'profileinfo/image/checklist.png' %}"
+                        class="display-none" alt>
+                </div>
+                <div class="profile-card">
+                    <div class="friend-profile-info">
+                        <img
+                            src="{%static 'profileinfo/image/dummyprofile.webp' %}"
+                            class="friend-profile-picture">
+                        <div class="profile-card-data">
+                            <h1>Raymond Ghin</h1>
+                            <p>123 Friends</p>
+                        </div>
+                    </div>
+                    <button>Add Friend</button>
+                    <img src="{%static 'profileinfo/image/checklist.png' %}"
+                        class="display-none" alt>
+                </div>
+                <div class="profile-card">
+                    <div class="friend-profile-info">
+                        <img
+                            src="{%static 'profileinfo/image/dummyprofile.webp' %}"
+                            class="friend-profile-picture">
+                        <div class="profile-card-data">
+                            <h1>Raymond Ghin</h1>
+                            <p>123 Friends</p>
+                        </div>
+                    </div>
+                    <button>Add Friend</button>
+                    <img src="{%static 'profileinfo/image/checklist.png' %}"
+                        class="display-none" alt>
+                </div>
+            </div>
+        </div>
+    </body>
+
+</html>
