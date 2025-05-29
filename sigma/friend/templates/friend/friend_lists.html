@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+    <title>Friend List for {{ current_user.username }}</title>
+  </head>
+  <body>
+    <h1>Friend List for {{ current_user.username }}</h1>
+    
+    <h2>Friends</h2>
+    <ul>
+      {% for friend in friends %}
+        <li>{{ friend.friend_username.username }} - {{ friend.friend_username.email }}</li>
+      {% empty %}
+        <li>No friends yet.</li>
+      {% endfor %}
+    </ul>
+
+    <h2>Pending Friend Requests</h2>
+    <ul>
+      {% for request in pending_requests %}
+        <li>
+          {{ request.user.username }} wants to be your friend
+          <form method="post" action="{% url 'friend:friend_list' user_id=current_user.id %}">
+            {% csrf_token %}
+            <input type="hidden" name="action" value="accept_request">
+            <input type="hidden" name="request_id" value="{{ request.id }}">
+            <button type="submit">Accept</button>
+          </form>
+        </li>
+      {% empty %}
+        <li>No pending friend requests.</li>
+      {% endfor %}
+    </ul>
+
+    <h2>Other Users (Not Friends or Pending)</h2>
+    <ul>
+      {% for user in alluser %}
+        <li>
+          {{ user.username }} - {{ user.email }}
+          <form method="post" action="{% url 'friend:friend_list' user_id=current_user.id %}">
+            {% csrf_token %}
+            <input type="hidden" name="action" value="add_friend">
+            <input type="hidden" name="friend_id" value="{{ user.id }}">
+            <button type="submit">Send Friend Request</button>
+          </form>
+        </li>
+      {% empty %}
+        <li>No other users available.</li>
+      {% endfor %}
+    </ul>
+  </body>
+</html>
