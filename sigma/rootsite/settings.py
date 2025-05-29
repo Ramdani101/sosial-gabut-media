@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'home.apps.HomeConfig',
     'profileinfo.apps.ProfileinfoConfig',
     'register.apps.RegisterConfig', 
+    'friend.apps.FriendConfig',
 ]
 
 MIDDLEWARE = [
