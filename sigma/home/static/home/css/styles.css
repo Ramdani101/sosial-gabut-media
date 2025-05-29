@@ -476,8 +476,8 @@ body {
 }
 
 .post-image-icon {
-    width: 40px;
-    height: 40px;
+    width: 30px;
+    height: 30px;
 }
 
 .post-container {
@@ -554,6 +554,21 @@ body {
 }
 
 .action-button {
+    width: fit-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+}
+
+.action-button svg{
+    width: 20px;
+    height: 20px;
+}
+
+.action-button img{
     width: 20px;
     height: 20px;
 }
@@ -643,6 +658,7 @@ body {
     background-color: white;
     border-radius: 18px;
     padding: 20px;
+    z-index: 400;
 }
 
 .create-post{
@@ -898,3 +914,10 @@ body {
 .display-none {
     display: none;
 }
+
+.comment-send-button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
