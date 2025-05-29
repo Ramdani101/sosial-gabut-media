@@ -408,4 +408,21 @@ body {
     margin: 0;
 }
 
+.profile-card button {
+    background-color: #2853ff;
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 10px 20px;
+    border-radius: 12px;
+    border: none;
+    cursor: pointer;
+}
+
+.already-friend-icon {
+    width: 20px;
+    height: 20px;
+}
+
 
