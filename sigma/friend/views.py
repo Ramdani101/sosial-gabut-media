@@ -19,12 +19,13 @@ def friend_list(request, user_id):
     # Ambil permintaan pertemanan tertunda yang diterima oleh current_user
     pending_requests = Friend.objects.filter(friend_username=current_user, status='pending')
 
-    # Ambil semua pengguna yang belum mengirim permintaan dan bukan teman
+    # Ambil semua pengguna yang belum mengirim permintaan, bukan teman, dan belum dikirimi permintaan oleh current_user
     friend_ids = friends.values_list('friend_username__id', flat=True)  # ID teman yang sudah diterima
     pending_sender_ids = pending_requests.values_list('user__id', flat=True)  # ID pengirim permintaan tertunda
-    alluser = User.objects.exclude(id=user_id).exclude(id__in=friend_ids).exclude(id__in=pending_sender_ids)
+    pending_receiver_ids = Friend.objects.filter(user=current_user, status='pending').values_list('friend_username__id', flat=True)  # ID yang sudah dikirimi permintaan
+    alluser = User.objects.exclude(id=user_id).exclude(id__in=friend_ids).exclude(id__in=pending_sender_ids).exclude(id__in=pending_receiver_ids)
 
-    # Tangani penambahan teman atau penerimaan permintaan
+    # Tangani penambahan teman, penerimaan, atau penolakan permintaan
     if request.method == "POST":
         action = request.POST.get("action")
         if action == "add_friend":
@@ -47,9 +48,18 @@ def friend_list(request, user_id):
                 friend_request.save()
             except Friend.DoesNotExist:
                 return HttpResponse("Friend request not found", status=404)
+        elif action == "reject_request":
+            request_id = request.POST.get("request_id")
+            try:
+                friend_request = Friend.objects.get(id=request_id, friend_username=current_user, status='pending')
+                friend_request.status = 'rejected'
+                friend_request.accepted_at = None
+                friend_request.save()
+            except Friend.DoesNotExist:
+                return HttpResponse("Friend request not found", status=404)
         return redirect('friend:friend_list', user_id=user_id)
 
-    template = loader.get_template("friend/friend_lists.html") 
+    template = loader.get_template("friend/friend_lists.html")
     context = {
         'friends': friends,
         'pending_requests': pending_requests,

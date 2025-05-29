@@ -151,6 +151,17 @@ body {
     gap: 5px;
 }
 
+.box-img2{
+    background-color: white;
+    height: 220px;
+    width: 150px;
+    border-radius: 20px;
+    padding: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
 .gambar{
     width: 150px;
     height: 150px;
@@ -165,10 +176,17 @@ body {
     font-family: "poppins", sans-serif; 
 }
 
+.b{
+    font-family: "poppins", sans-serif; 
+    font-size: 15px; 
+    padding-left: 5px;
+    
+}
+
 .button1{
     border-radius: 180px;
     background-color: #4e71ff;
-    width: 90%;
+    width: 150px;
     height: 25px;
     color: white;
     border: none;
@@ -177,7 +195,7 @@ body {
 .button2{
     border-radius: 180px;
     background-color: rgb(142, 138, 138);
-    width: 90%;
+    width: 150px;
     height: 25px;
     border: none;
 }
