@@ -134,6 +134,12 @@ body {
     border-radius: 20px;
 }
 
+.box2{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 30px;
+}
+
 .box-img{
     background-color: white;
     height: 250px;
