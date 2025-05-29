@@ -1,0 +1,105 @@
+body {
+    display: flex;
+    margin: 0;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(to right, #4e71ff, #b32ff1);
+    height: 100vh;
+   
+}
+
+.jendela{
+    height: 60vh;
+    width: 35vw;
+    background-color: white;
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px;
+    border-top-left-radius: 30px;
+    border-bottom-left-radius: 30px;
+    display: flex;
+    
+}
+
+.form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 35px;
+    min-width: 100%;
+
+}
+
+.input{
+    height: 30px;
+    width: 430px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    padding-left: 10px;
+    margin: 10px;
+    font-family: "Poppins", sans-serif;
+    border-color: #4e71ff;
+    border-width: 3px;
+}
+
+.date{
+    height: 30px;
+    width: 130px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    padding-left: 10px;
+    font-family: "Poppins", sans-serif;
+    border-width: 3px;
+    border-color: #4e71ff;
+
+}
+
+.button{
+    height: 40px;
+    width: 180px;
+    margin: 25px;
+    background-color: #4e71ff;
+    border-radius: 180px;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+    border: none;
+    font-family: "Poppins", sans-serif;
+
+}
+
+.logo {
+    width: 50px;
+    height: 50px;
+    background-color: white;
+    color: #4e71ff;
+    font-family: 'Poppins', sans-serif;
+    font-size: 32px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 360px;
+}
+
+.container {
+    width: 55vw;
+    height: 100vh;
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.logo-container {
+    min-width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
