@@ -9,12 +9,22 @@ class User(models.Model):
         return self.username
 
 class Friend(models.Model):
-    user = models.ForeignKey(User, related_name='friends', on_delete=models.CASCADE)
-    friend_username = models.ForeignKey(User, related_name='friend_of', on_delete=models.CASCADE)
-    accepted_at = models.DateTimeField("date accepted")
+    STATUS_CHOICES = (
+        ('pending', 'Pending'),
+        ('accepted', 'Accepted'),
+        ('rejected', 'Rejected'),  # Opsional, jika Anda ingin mendukung penolakan
+    )
+
+    user = models.ForeignKey(User, related_name='friend_requests_sent', on_delete=models.CASCADE)
+    friend_username = models.ForeignKey(User, related_name='friend_requests_received', on_delete=models.CASCADE)
+    status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='pending')
+    created_at = models.DateTimeField(auto_now_add=True)  # Waktu pembuatan permintaan
+    accepted_at = models.DateTimeField(null=True, blank=True)  # Waktu diterima, boleh null
 
     def __str__(self):
-        return self.friend_username.username
+        return f"{self.user.username} -> {self.friend_username.username} ({self.status})"
 
-
+    class Meta:
+        # Pastikan tidak ada duplikasi permintaan pertemanan
+        unique_together = ('user', 'friend_username')
 
