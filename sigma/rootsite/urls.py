@@ -24,7 +24,7 @@ urlpatterns = [
     path('', include('home.urls')),
     path('profile/', include('profileinfo.urls')),
     path('friends/', include ('friend.urls')),
-    path('register/', register_views.register_user, name='register'),
+    path('register/', register_views.registerView, name='register'),
     path('login/', auth_views.LoginView.as_view(template_name='register/login.html'), name='login'),
     path('logout/', auth_views.LogoutView.as_view(), name='logout'),
 ]
