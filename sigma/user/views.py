@@ -1,7 +1,8 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
-from .models import Profile
+from django.contrib.auth import authenticate, login
 from django.contrib import messages
+from .models import Profile
 from datetime import date
 
 def registerView(request):
@@ -40,7 +41,21 @@ def registerView(request):
 
     return render(request, 'register/signup.html')
 
-def login(request):
+def loginView(request):
+    print("login page")
+    if request.method == 'POST':
+        username = request.POST['username']
+        password = request.POST['password']
+        
+        user = authenticate(request, username=username, password=password)
+
+        if user is not None:
+            login(request, user)
+            print(f"User {username} logged in with pk: {user.pk}")
+            return redirect('home:home')
+        else:
+            messages.error(request, 'Username atau password salah.')
+
     return render(request, 'register/login.html')
 
 def logout(request):

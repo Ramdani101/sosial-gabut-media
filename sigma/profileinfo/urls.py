@@ -4,5 +4,6 @@ from . import views
 app_name = "profileinfo"
 urlpatterns = [
     # contoh : /
-    path("", views.index, name="index"),
+    path("post/<int:id>/", views.post, name="post"),
+    path("friend/<int:id>/", views.friend, name="friend"),
 ]

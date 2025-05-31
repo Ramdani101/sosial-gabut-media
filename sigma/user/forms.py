@@ -3,10 +3,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 
 class UserRegisterForm(UserCreationForm):
-    birth_date = forms.DateField(
-        required=True,
-        widget=forms.DateInput(attrs={'type': 'date'})
-    )
+    birth_date = forms.DateField(required=True, widget=forms.DateInput(attrs={'type': 'date'}), input_formats=['%d/%m/%Y'])
 
     class Meta:
         model = User

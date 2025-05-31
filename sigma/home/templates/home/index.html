@@ -58,6 +58,7 @@
                                 fill="none"
                                 pointer-events="none"></path></g></svg>
                 </span>
+                <a href="{% url 'friend:friend' %}">
                 <span><svg class="svg-icon" xmlns="http://www.w3.org/2000/svg"
                         xmlns:xlink="http://www.w3.org/1999/xlink"
                         preserveAspectRatio="xMidYMid meet" version="1.0"
@@ -67,6 +68,7 @@
                         height="54.805600755611px"><g id="__id3_szw24o237"><path
                                 d="m48.8 40.9c3.3 2.1 5.6 5.6 6 9.6 1.3 0.6 2.8 1 4.4 1 5.8 0 10.5-4.7 10.5-10.5s-4.7-10.5-10.5-10.5c-5.7 0.1-10.4 4.7-10.4 10.4zm-6.9 21.4c5.8 0 10.5-4.7 10.5-10.5s-4.7-10.5-10.5-10.5-10.5 4.7-10.5 10.5 4.7 10.5 10.5 10.5zm4.4 0.7h-8.9c-7.4 0-13.4 6-13.4 13.4v11.1l0.7 0.2c7 2.2 13.2 2.9 18.2 2.9 9.8 0 15.5-2.8 15.9-3l0.7-0.4h0.1v-10.8c0.1-7.4-5.9-13.4-13.3-13.4zm17.3-10.8h-8.8c-0.1 3.5-1.6 6.7-4 9 6.6 2 11.4 8 11.4 15.2v3.3c8.7-0.3 13.7-2.8 14-2.9l0.7-0.4h0.1v-10.8c0-7.4-6-13.4-13.4-13.4z"
                                 style="fill: inherit;" /></g></svg></span>
+                </a>
                 <span><svg class="svg-icon" xmlns="http://www.w3.org/2000/svg"
                         xmlns:xlink="http://www.w3.org/1999/xlink"
                         preserveAspectRatio="xMidYMid meet" version="1.0"
@@ -137,8 +139,8 @@
                             id="__id17_szw24o237"><path
                                 d="M23 44c2.21 0 4-1.79 4-4h-8c0 2.21 1.79 4 4 4zm13-12v-11c0-6.15-4.27-11.28-10-12.64v-1.36c0-1.66-1.34-3-3-3s-3 1.34-3 3v1.36c-5.73 1.36-10 6.49-10 12.64v11l-4 4v2h34v-2l-4-4z"
                                 style="fill: inherit;" /></g></svg></span>
-                <span><img src="{%static 'home/image/dummyprofile.webp' %}"
-                        class="image-icon-rounded"></span>
+                <a href="{% url 'profileinfo:post' request.user.id %}"><span><img src="{{ request.user.profile.image.url }}"
+                        class="image-icon-rounded"></span></a>
             </div>
         </nav>
         <div class="main-container">

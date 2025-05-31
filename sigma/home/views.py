@@ -1,6 +1,5 @@
 from django.shortcuts import render
-from django.http import HttpResponse
-
+from user.models import Profile
 
 def homeView(request):
     return render(request, "home/index.html")

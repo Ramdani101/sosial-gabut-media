@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{%static 'login/css/styles.css'%}">
+    <link rel="stylesheet" href="{%static 'register/css/styleLogin.css'%}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -29,18 +29,19 @@
                 S
             </div>
         </div>
-        <form action="" class="form">
+        <form method="POST" action="" class="form">
+            {% csrf_token %}
             <span class="outer-input">
-                <input type="text" class="input" name="" id="" placeholder="email adress" class="input-field">
+                <input type="text" class="input" name="username" id="" placeholder="username" class="input-field">
             </span>
             <span class="outer-input">
-                <input type="password" class="input" name="" id="" placeholder="password" class="input-field">
+                <input type="password" class="input" name="password" id="" placeholder="password" class="input-field">
             </span>
             <a class="forgot">Forgot Password</a>
-            <button class="button">Login</button>
+            <button class="button" type="submit">Login</button>
             <a class="sign-up">Sign Up</a>
         </form>
     </div>
 </body>
-
 </html>
+
