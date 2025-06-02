@@ -1,5 +1,6 @@
 from django.contrib import admin
-from .models import User, Friend
+from django.contrib.auth.models import User
+from .models import Friend
 from django.utils import timezone
 
 class FriendInLine(admin.StackedInline):
@@ -29,4 +30,7 @@ class UserAdmin(admin.ModelAdmin):
     fields = ['username', 'email', 'password']
     inlines = [FriendInLine]
 
+
+admin.site.unregister(User)
 admin.site.register(User, UserAdmin)
+admin.site.register(Friend)

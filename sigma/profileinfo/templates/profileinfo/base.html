@@ -10,6 +10,8 @@
         <link
             href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
             rel="stylesheet">
+        <script src="{% static 'profileinfo/js/main.js' %}"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
         <title>Profile</title>
     </head>
     <body>
@@ -35,7 +37,7 @@
             </div>
             <div class="nav-links-center">
                 <span class="active-page">
-                    <a href="{% url 'home:home' %}">
+                    <a href="{% url 'home:index' %}">
                     <svg class="svg-icon" xmlns="http://www.w3.org/2000/svg"
                         xmlns:xlink="http://www.w3.org/1999/xlink" data-name="1"
                         preserveAspectRatio="xMidYMid meet" version="1.0"
@@ -48,7 +50,7 @@
                                 style="fill: inherit;" /></g></svg>
                     </a>
                 </span>
-                <span><a href="{% url 'friend:friend' %}"><svg class="svg-icon" xmlns="http://www.w3.org/2000/svg"
+                <span><a href="{% url 'friend:friend_list' request.user.id %}"><svg class="svg-icon" xmlns="http://www.w3.org/2000/svg"
                         xmlns:xlink="http://www.w3.org/1999/xlink"
                         preserveAspectRatio="xMidYMid meet" version="1.0"
                         viewBox="24.0 30.5 53.0 60.1" zoomAndPan="magnify"
@@ -143,9 +145,10 @@
                             class="profile-picture">
                         <div class>
                             <h1>{{ user_profile.username }}</h1>
-                            <p>123 Friends</p>
+                            <p>{{ total_friends }} Friends</p>
                         </div>
                     </div>
+                    {% if request.user.id == user_profile.user.id %}
                     <button class=" addfriend-button">Add
                         Friend</button>
                     <button class="display-none already-friend">
@@ -158,75 +161,11 @@
                         <img src="{%static 'profileinfo/image/checklist.png' %}"
                             class="button-icon">
                     </button>
+                    {% endif %}
                 </div>
             </div>
             <div class="selection-container">
                 {% block active %} {% endblock %}
-            </div>
-            <div class="display-none post-box ">
-                <div class="post-container">
-                    <div class="post-edit">
-                        <p></p>
-                        <p></p>
-                        <p></p>
-                    </div>
-                    <div class="post-profile">
-                        <img
-                            src="{%static 'profileinfo/image/dummyprofile.webp' %}"
-                            class="image-icon-rounded">
-                        <div class="post-data">
-                            <h1 class="post-name">Aristoteles</h1>
-                            <p class="post-time">12h</p>
-                        </div>
-                    </div>
-                    <div class="post-description">
-                        <p>
-                            {% lorem 20 w random %}
-                        </p>
-                    </div>
-                    <div class="post-action">
-                        <div class="post-action-child">
-                            <svg class="action-button"
-                                xmlns="http://www.w3.org/2000/svg"
-                                xmlns:xlink="http://www.w3.org/1999/xlink"
-                                preserveAspectRatio="xMidYMid meet"
-                                version="1.0" viewBox="0.0 -3.1 488.5 464.2"
-                                zoomAndPan="magnify"
-                                style="fill: rgb(166, 166, 166);"
-                                original_string_length="1754"
-                                width="27.87671140325449px"
-                                height="26.457533368179714px"><g
-                                    id="__id26_s2szj1cwxj"><path
-                                        d="M485.440918,217.4516754l-37.1679688,194.3686371c-5.453125,28.5185547-30.4853516,49.2167969-59.5195312,49.2167969 H182.5239258c-10.3447876,0-20.2749023-2.6702271-29.0145874-7.6758423 c-5.8966675-3.3773193-9.515686-9.6754761-9.515686-16.4708862V199.1891632c0-7.2915039,4.1589966-13.9716797,10.7440186-17.1027222 c6.3883057-3.0375366,12.4779663-6.5971069,18.2403564-10.6733398c8.8525391-6.2617188,25.3300781-17.9169922,35.2900391-38.8720703 c3.6010742-7.5756836,7.2397461-19.3066406,8.7099609-71.1113281c0.4921875-17.3413086,0.6079102-34.824707,0.3442383-51.9638672 c-0.0566406-3.6782231,2.5629883-6.8544927,6.1845703-7.4990239c0.109375-0.0205078,0.2817383-0.0576172,0.5029297-0.1044922 c14.8139648-3.1118164,42.9174805-5.0083008,64.6655273,17.2504883c19.0742188,19.5214825,20.75,46.7236328,20.8925781,51.9785156 c0.0019531,0.0678711,0.0029297,0.1352539,0.0029297,0.203125v81.3774414h122.3037109 c16.3134766,0,31.6328125,7.2104492,42.0292969,19.7827148C484.2993164,185.027359,488.5053711,201.4277496,485.440918,217.4516754z M92.3303223,178.2277374c-1.149231-0.1414795-2.3140259-0.2203979-3.493042-0.2203979H29.6918335 C13.3198242,178.0073395,0,191.9555817,0,209.1006012v207.4384613c0,16.3218994,12.0735474,29.7365723,27.3573608,30.9885864 c1.149231,0.1414795,2.3140259,0.2203979,3.493042,0.2203979h59.1453857c16.3720093,0,29.6918335-13.9482422,29.6918335-31.0932617 V209.2163239C119.6876221,192.8944244,107.6141357,179.4798126,92.3303223,178.2277374z"
-                                        style="fill: inherit;" /></g></svg>
-                            <p class="post-counter">11</p>
-
-                        </div>
-                        <div class="post-action-child">
-                            <img class="action-button"
-                                src="{% static 'home/image/comment.png' %}"
-                                class="post-image-icon">
-                            <p class="post-counter">11</p>
-                        </div>
-                        <div class="post-action-child">
-                            <svg class="action-button"
-                                xmlns="http://www.w3.org/2000/svg"
-                                xmlns:xlink="http://www.w3.org/1999/xlink"
-                                preserveAspectRatio="xMidYMid meet"
-                                version="1.0" viewBox="-4.0 -0.6 488.9 449.2"
-                                zoomAndPan="magnify"
-                                style="fill: rgb(166, 166, 166);"
-                                original_string_length="1319"
-                                width="28.660854228520037px"
-                                height="26.31587524618658px"><g
-                                    id="__id28_s2szj1cwxj"><path
-                                        d="M11.2157049,448.6324158c-0.3994141,0-0.8022461-0.03125-1.2055664-0.0966797 c-3.1240239-0.5078125-5.5927739-2.921875-6.1708989-6.0332031c-0.8227539-4.4306641-7.8310547-44.7773438-0.59375-96.3847656 c4.1176758-29.359375,12.0556641-57.1533203,23.5947266-82.6113281c14.290041-31.527832,34.1943359-59.6088867,59.159668-83.4628906 c55.4902267-53.0273438,120.0385666-70.7558594,166.6464844-76.0024414V7.5000911 c0-2.9941406,1.7802734-5.7011719,4.5302734-6.8867188c2.7490234-1.1860352,5.9404297-0.6220703,8.1171875,1.4321288 l217.2128906,204.9960938c1.5019531,1.4169922,2.3525391,3.3901367,2.3525391,5.4545898s-0.8505859,4.0375977-2.3525391,5.4541016 L265.2938232,422.9566345c-2.1767578,2.0546875-5.3681641,2.6201172-8.1171875,1.4326172 c-2.7490234-1.1855469-4.5302734-3.8925781-4.5302734-6.8867188V302.9839783 c-42.3925781,0.8535156-82.6425781,10.9150391-119.7548828,29.9472656 c-64.6166916,33.1386719-99.8603439,84.2929688-115.1176682,111.8349609 C16.4383602,447.1773376,13.9095526,448.6324158,11.2157049,448.6324158z"
-                                        style="fill: inherit;" /></g></svg>
-                            <p class="post-counter">11</p>
-
-                        </div>
-                    </div>
-                </div>
             </div>
             {% block content %} {% endblock %}
         </body>

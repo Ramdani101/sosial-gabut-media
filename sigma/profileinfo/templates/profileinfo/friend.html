@@ -9,75 +9,18 @@
 {% endblock active %}
 {% block content %}
 <div class="friend-box">
+    {% for friend in friends %}
     <div class="profile-card">
         <div class="friend-profile-info">
             <img
-                src="{% static 'profileinfo/image/dummyprofile.webp' %}"
+                src="{{ friend.profile.image.url }}"
                 class="friend-profile-picture">
             <div class="profile-card-data">
-                <h1>Raymond Ghin</h1>
-                <p>123 Friends</p>
+                <h1>{{ friend.username }}</h1>
             </div>
         </div>
-        <button class="display-none">Add Friend</button>
-        <img src="{% static 'profileinfo/image/checklist.png' %}"
-            class=" already-friend-icon" alt>
     </div>
-    <div class="profile-card">
-        <div class="friend-profile-info">
-            <img
-                src="{% static 'profileinfo/image/dummyprofile.webp' %}"
-                class="friend-profile-picture">
-            <div class="profile-card-data">
-                <h1>Raymond Ghin</h1>
-                <p>123 Friends</p>
-            </div>
-        </div>
-        <button class="display-none">Add Friend</button>
-        <img src="{% static 'profileinfo/image/checklist.png' %}"
-            class=" already-friend-icon" alt>
-    </div>
-    <div class="profile-card">
-        <div class="friend-profile-info">
-            <img
-                src="{% static 'profileinfo/image/dummyprofile.webp' %}"
-                class="friend-profile-picture">
-            <div class="profile-card-data">
-                <h1>Raymond Ghin</h1>
-                <p>123 Friends</p>
-            </div>
-        </div>
-        <button class="">Add Friend</button>
-        <img src="{% static 'profileinfo/image/checklist.png' %}"
-            class="display-none already-friend-icon" alt>
-    </div>
-    <div class="profile-card">
-        <div class="friend-profile-info">
-            <img
-                src="{% static 'profileinfo/image/dummyprofile.webp' %}"
-                class="friend-profile-picture">
-            <div class="profile-card-data">
-                <h1>Raymond Ghin</h1>
-                <p>123 Friends</p>
-            </div>
-        </div>
-        <button class="">Add Friend</button>
-        <img src="{% static 'profileinfo/image/checklist.png' %}"
-            class="display-none already-friend-icon" alt>
-    </div>
-    <div class="profile-card">
-        <div class="friend-profile-info">
-            <img
-                src="{% static 'profileinfo/image/dummyprofile.webp' %}"
-                class="friend-profile-picture">
-            <div class="profile-card-data">
-                <h1>Raymond Ghin</h1>
-                <p>123 Friends</p>
-            </div>
-        </div>
-        <button class="">Add Friend</button>
-        <img src="{% static 'profileinfo/image/checklist.png' %}"
-            class="display-none already-friend-icon" alt>
-    </div>
+    {% empty %}
+    {% endfor %}
 </div>
 {% endblock content %}

@@ -18,7 +18,7 @@ from django.contrib.auth.models import User
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     birth_date = models.DateField(null=True, blank=True)
-    image = models.ImageField(upload_to='profile_images', default='default.jpg')
+    image = models.ImageField(upload_to='profile_images', default='profile_images/default.jpg')
     
     class Role(models.TextChoices):
         ADMIN = 'admin', 'Admin'
@@ -48,3 +48,4 @@ class Post(models.Model):
 
     def __str__(self):
         return f"{self.user.username}'s post on {self.created_at.date()}"
+    

@@ -32,13 +32,13 @@ def registerView(request):
         # Create user
         user = User.objects.create_user(username=username, email=email, password=password)
 
-        # Create user profile with birth date
-        profile = Profile.objects.create(user=user, birth_date=birth_date)
-        profile.save()
+        # Profile akan otomatis dibuat oleh signals, tinggal update birth_date
+        user.profile.birth_date = birth_date
+        user.profile.save()
 
         messages.success(request, "User registered successfully.")
         return redirect('login')
-
+    print("register failed")
     return render(request, 'register/signup.html')
 
 def loginView(request):
@@ -48,11 +48,13 @@ def loginView(request):
         password = request.POST['password']
         
         user = authenticate(request, username=username, password=password)
-
+        print(f"Authenticating user: {username}")
         if user is not None:
             login(request, user)
+
+            Profile.objects.get_or_create(user=user)
             print(f"User {username} logged in with pk: {user.pk}")
-            return redirect('home:home')
+            return redirect('home:index')
         else:
             messages.error(request, 'Username atau password salah.')
 

@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'home.apps.HomeConfig',
     'profileinfo.apps.ProfileinfoConfig',
-    'user.apps.UserConfig', 
+    'users.apps.UsersConfig', 
     'friend.apps.FriendConfig',
 ]
 
