@@ -3,7 +3,7 @@
 
 {% block active %}
 <button class="selection-active">Post</button>
-<form method="get" action="{% url 'profileinfo:friend' request.user.id %}">
+<form method="get" action="{% url 'profileinfo:friend' user_profile.id %}">
     <button class="selection-inactive" type="submit">Friend</button>
 </form>
 {% endblock active %}
@@ -23,7 +23,7 @@
       />
       <div class="post-data">
         <h1 class="post-name">{{ post.user.username }}</h1>
-        <p class="post-time">{{ post.pub_date|date:"d M Y H:i" }}</p>
+        <p class="post-time">{{ post.pub_date|date:"d-m-Y" }}</p>
       </div>
     </div>
     <div class="post-description">

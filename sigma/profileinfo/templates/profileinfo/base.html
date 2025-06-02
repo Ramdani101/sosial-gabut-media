@@ -148,7 +148,7 @@
                             <p>{{ total_friends }} Friends</p>
                         </div>
                     </div>
-                    {% if request.user.id == user_profile.user.id %}
+                    {% if request.user.id == user_profile.id %}
                     <button class=" addfriend-button">Add
                         Friend</button>
                     <button class="display-none already-friend">

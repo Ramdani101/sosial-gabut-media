@@ -16,12 +16,21 @@ def post(request, id):
         Q(user=user_profile, status='accepted') | 
         Q(friend_username=user_profile, status='accepted')
     ).values_list('user__id', 'friend_username__id')
-    
+
     friend_ids_flat = set()
     for u, f in friend_ids:
         friend_ids_flat.add(u)
         friend_ids_flat.add(f)
     friend_ids_flat.discard(user_profile.id)  # Jangan masukkan diri sendiri
+
+    already_friend = Friend.objects.filter(
+        (Q(user=request.user, friend_username=user_profile) | Q(user=user_profile, friend_username=request.user)),
+        status='accepted'
+    ).exists()
+    already_pending = Friend.objects.filter(
+        (Q(user=request.user, friend_username=user_profile) | Q(user=user_profile, friend_username=request.user)),
+        status='pending'
+    ).exists()
 
     friends = User.objects.filter(id__in=friend_ids_flat)
     total_friends = friends.count()
@@ -32,6 +41,8 @@ def post(request, id):
             "user_profile": user_profile,
             "user_posts": user_posts,
             "total_friends": total_friends,
+            "already_friend": already_friend,
+            "already_pending": already_pending,
         }
     )
 
@@ -52,10 +63,21 @@ def friend(request, id):
     friends = User.objects.filter(id__in=friend_ids_flat)
     total_friends = friends.count()
 
+    already_friend = Friend.objects.filter(
+        (Q(user=request.user, friend_username=user_profile) | Q(user=user_profile, friend_username=request.user)),
+        status='accepted'
+    ).exists()
+    already_pending = Friend.objects.filter(
+        (Q(user=request.user, friend_username=user_profile) | Q(user=user_profile, friend_username=request.user)),
+        status='pending'
+    ).exists()
+
     return render(request, "profileinfo/friend.html", {
         "user_profile": user_profile,
         "friends": friends,
         "total_friends": total_friends,
+        "already_friend": already_friend,
+        "already_pending": already_pending,
     })
 
 def like_post(request, id):

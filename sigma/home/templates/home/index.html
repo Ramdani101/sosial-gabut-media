@@ -670,10 +670,12 @@
         <div class="friend-info">
           {% for friend in friends %}
           <div class="info-left">
+            <a href="{% url 'profileinfo:post' friend.id %}">
             <img
               src="{{ friend.profile.image.url }}"
               class="image-icon-rounded"
             />
+          </a>
             <div>
               <h2>{{ friend.username }}</h2>
             </div>

@@ -405,9 +405,25 @@ body {
 }
 
 .action-button {
+    width: fit-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+}
+
+.action-button svg{
     width: 20px;
     height: 20px;
 }
+
+.action-button img{
+    width: 20px;
+    height: 20px;
+}
+
 
 .friend-box {
     display: grid;

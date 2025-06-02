@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block active %}
-<form method="get" action="{% url 'profileinfo:post' request.user.id %}">
+<form method="get" action="{% url 'profileinfo:post' user_profile.id %}">
     <button class="selection-inactive" type="submit">Post</button>
 </form>
 <button class="selection-active">Friend</button>
@@ -12,9 +12,11 @@
     {% for friend in friends %}
     <div class="profile-card">
         <div class="friend-profile-info">
+            <a href="{% url 'profileinfo:post' friend.id %}">
             <img
                 src="{{ friend.profile.image.url }}"
                 class="friend-profile-picture">
+            </a>
             <div class="profile-card-data">
                 <h1>{{ friend.username }}</h1>
             </div>
