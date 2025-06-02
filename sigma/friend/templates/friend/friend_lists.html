@@ -86,7 +86,7 @@
             </div>
         </div>
         <div class="nav-links-center">
-            <span>
+            <span> <a href="{% url 'home:index' %}">
                 <svg class="svg-icon" xmlns="http://www.w3.org/2000/svg"
                     xmlns:xlink="http://www.w3.org/1999/xlink" data-name="1"
                     preserveAspectRatio="xMidYMid meet" version="1.0"
@@ -96,10 +96,10 @@
                     height="47.67232118707306px"><g
                         id="__id2_szw24o237"><path
                             d="M52.89,28.039H50.6V51.521a2.434,2.434,0,0,1-2.552,2.28H34.52V37.79a1.673,1.673,0,0,0-1.672-1.673H23.033a1.672,1.672,0,0,0-1.672,1.673V53.8H7.832A2.418,2.418,0,0,1,5.29,51.529V28.039H2.99c-2.549,0-3.93-2.4-2.26-3.94L25.9.83a3.505,3.505,0,0,1,4.54.009Q42.8,12.473,55.171,24.107C56.81,25.662,55.43,28.039,52.89,28.039Z"
-                            style="fill: inherit;" /></g></svg>
+                            style="fill: inherit;" /></g></svg></a>
                 
-            </span>
-            <span class="active-page"><svg class="svg-icon" xmlns="http://www.w3.org/2000/svg"
+            </span> 
+            <span class="active-page"><a href="{% url 'friend:friend_list' request.user.id %}"><svg class="svg-icon" xmlns="http://www.w3.org/2000/svg"
                     xmlns:xlink="http://www.w3.org/1999/xlink"
                     preserveAspectRatio="xMidYMid meet" version="1.0"
                     viewBox="24.0 30.5 53.0 60.1" zoomAndPan="magnify"
@@ -118,7 +118,7 @@
                             d="M0,3L43.76895244905222,3"
                             stroke-linecap="butt" stroke-width="6"
                             fill="none"
-                            pointer-events="none"></path></g></svg>
+                            pointer-events="none"></path></g></svg></a>
             
             </span>
             <span><svg class="svg-icon" xmlns="http://www.w3.org/2000/svg"
@@ -191,9 +191,10 @@
                         id="__id17_szw24o237"><path
                             d="M23 44c2.21 0 4-1.79 4-4h-8c0 2.21 1.79 4 4 4zm13-12v-11c0-6.15-4.27-11.28-10-12.64v-1.36c0-1.66-1.34-3-3-3s-3 1.34-3 3v1.36c-5.73 1.36-10 6.49-10 12.64v11l-4 4v2h34v-2l-4-4z"
                             style="fill: inherit;" /></g></svg></span>
-            <span><img
-                    src="{%static 'profileinfo/image/dummyprofile.webp' %}"
-                    class="image-icon-rounded"></span>
+              <span><a href="{% url 'profileinfo:post' request.user.id %}"><img
+                src="{{ request.user.profile.image.url }}"
+                class="image-icon-rounded"
+            /></a></span>
         </div>
     </nav>
     <div class="box">
@@ -201,7 +202,7 @@
         <div style="display: flex; gap: 18px; overflow: scroll; overflow-y: hidden; border-radius: 10px; padding-bottom: 10px;">
             {% for request in pending_requests %}
                 <div class="box-img">
-                    <img src="{%static 'friend/image/Friends.jpg' %}" class="gambar ">
+                    <img src="{{ user.profile.image.url }}" class="gambar ">
                     <h4 class="nama">{{request.user.username }}</h4>
                     <div class="button-posisi">
                         <form method="post" action="{% url 'friend:friend_list' user_id=current_user.id %}">
@@ -229,7 +230,7 @@
         <div class="box2">
            {% for user in alluser %}
                 <div class="box-img2">
-                    <img src="{%static 'friend/image/Friends.jpg' %}" class="gambar ">
+                    <img src="{{ user.profile.image.url }}" class="gambar ">
                     <h4 class="nama">{{user.username}}</h4>
                     <div class="button-posisi">
                         <form method="post" action="{% url 'friend:friend_list' user_id=current_user.id %}">

@@ -1,25 +1,49 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import Postingan, Suka, Komentar
+from friend.models import Friend
 from django.utils import timezone
 from django.http import JsonResponse
 from django.db.models import Count
+from django.contrib.auth.models import User
+from django.db.models import Q
 import json
 
 def index(request):
     if request.method == "POST":
         konten = request.POST.get("konten")
-        user_id = 1
-        if konten and user_id:
+        user = request.user
+        if konten and user.is_authenticated:
             Postingan.objects.create(
-                konten=konten, user_id=user_id, pub_date=timezone.now()
+                user=user,
+                uploader_name=user.username,
+                uploader_image=user.profile.image.url,
+                konten=konten,
+                pub_date=timezone.now()
             )
             return redirect("home:index")
     postingan = Postingan.objects.annotate(jumlah_komentar=Count('comments')).order_by("-pub_date")
-    liked_post_id = Suka.objects.filter(user_id=1).values_list("post_id", flat=True)
+    liked_post_id = Suka.objects.filter(user_id=request.user.id).values_list("post_id", flat=True) if request.user.is_authenticated else []
+    if request.user.is_authenticated:
+        # Ambil semua user yang sudah berteman accepted dua arah
+        friend_ids = Friend.objects.filter(
+            Q(user=request.user, status='accepted') | 
+            Q(friend_username=request.user, status='accepted')
+        ).values_list('user__id', 'friend_username__id')
+
+        friend_ids_flat = set()
+        for u, f in friend_ids:
+            friend_ids_flat.add(u)
+            friend_ids_flat.add(f)
+        friend_ids_flat.discard(request.user.id)  # Jangan masukkan diri sendiri
+
+        friends = User.objects.filter(id__in=friend_ids_flat)
+    else:
+        friends = User.objects.none()
+
     return render(
         request,
         "home/index.html",
-        {"postingan": postingan, "liked_post_id": liked_post_id},
+        {"postingan": postingan, "liked_post_id": liked_post_id, "friends": friends},
     )
 
 
@@ -29,7 +53,7 @@ def like_post(request, id):
         and request.headers.get("x-requested-with") == "XMLHttpRequest"
     ):
         post = get_object_or_404(Postingan, id=id)
-        like, created = Suka.objects.get_or_create(user_id=1, post_id=post)
+        like, created = Suka.objects.get_or_create(user_id=request.user.id, post_id=post)
 
         if not created:
             like.delete()

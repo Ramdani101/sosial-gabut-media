@@ -46,6 +46,7 @@
       </div>
       <div class="nav-links-center">
         <span class="active-page">
+          <a href="{% url 'home:index' %}">
           <svg
             class="svg-icon"
             xmlns="http://www.w3.org/2000/svg"
@@ -96,9 +97,10 @@
               ></path>
             </g>
           </svg>
+          </a>
         </span>
         <span
-          ><svg
+          ><a href="{% url 'friend:friend_list' request.user.id %}"><svg
             class="svg-icon"
             xmlns="http://www.w3.org/2000/svg"
             xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -117,7 +119,7 @@
                 style="fill: inherit"
               />
             </g></svg
-        ></span>
+        ></a></span>
         <span
           ><svg
             class="svg-icon"
@@ -256,10 +258,10 @@
             </g></svg
         ></span>
         <span
-          ><img
-            src="{%static 'home/image/dummyprofile.webp' %}"
+          ><a href="{% url 'profileinfo:post' request.user.id %}"><img
+            src="{{ request.user.profile.image.url }}"
             class="image-icon-rounded"
-        /></span>
+        /></a></span>
       </div>
     </nav>
     <div class="main-container">
@@ -413,7 +415,7 @@
         <div class="create-post-container">
           <div class="post-title">
             <img
-              src="{%static 'home/image/dummyprofile.webp' %}"
+              src="{{ request.user.profile.image.url }}"
               class="image-icon-rounded"
             />
             <button onClick="openCreate()" class="create-button">
@@ -526,13 +528,15 @@
             <p></p>
           </div>
           <div class="post-profile">
+            <a href="{% url 'profileinfo:post' post.user.id %}">
             <img
-              src="{%static 'home/image/dummyprofile.webp' %}"
+              src="{{ post.user.profile.image.url }}"
               class="image-icon-rounded"
             />
+            </a>
             <div class="post-data">
-              <h1 class="post-name">Aristoteles</h1>
-              <p class="post-time">12h</p>
+              <h1 class="post-name">{{ post.user.username }}</h1>
+              <p class="post-time">{{ post.pub_date|date:"d-m-Y" }}</p>
             </div>
           </div>
           <div class="post-description">
@@ -664,18 +668,24 @@
           </svg>
         </div>
         <div class="friend-info">
+          {% for friend in friends %}
           <div class="info-left">
+            <a href="{% url 'profileinfo:post' friend.id %}">
             <img
-              src="{%static 'home/image/dummyprofile.webp' %}"
+              src="{{ friend.profile.image.url }}"
               class="image-icon-rounded"
             />
+          </a>
             <div>
-              <h2>Aristoteles</h2>
+              <h2>{{ friend.username }}</h2>
             </div>
           </div>
+          
           <div class="info-right">
             <p></p>
           </div>
+          {% empty %}
+          {% endfor %}
         </div>
       </div>
     </div>
@@ -799,17 +809,17 @@
       </div>
       <div class="profile-data">
         <img
-          src="{%static 'home/image/dummyprofile.webp' %}"
+          src="{{ request.user.profile.image.url }}"
           class="image-icon-rounded"
         />
         <div class>
-          <h1>Michael Angelo</h1>
+          <h1>{{ request.user.username }}</h1>
           <div class="select-container">
             <select name id>
               <option value="public">Public</option>
             </select>
             <img
-              src="{%static 'home/image/reverse-triangle.svg' %}"
+              src="{{ request.user.profile.image.url }}"
               class="select-image-icon"
             />
           </div>

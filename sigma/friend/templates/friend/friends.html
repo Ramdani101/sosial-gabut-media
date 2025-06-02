@@ -30,6 +30,7 @@
         </div>
         <div class="nav-links-center">
             <span>
+                <a href="{% url 'home:index' %}">
                 <svg class="svg-icon" xmlns="http://www.w3.org/2000/svg"
                     xmlns:xlink="http://www.w3.org/1999/xlink" data-name="1"
                     preserveAspectRatio="xMidYMid meet" version="1.0"
@@ -40,9 +41,9 @@
                         id="__id2_szw24o237"><path
                             d="M52.89,28.039H50.6V51.521a2.434,2.434,0,0,1-2.552,2.28H34.52V37.79a1.673,1.673,0,0,0-1.672-1.673H23.033a1.672,1.672,0,0,0-1.672,1.673V53.8H7.832A2.418,2.418,0,0,1,5.29,51.529V28.039H2.99c-2.549,0-3.93-2.4-2.26-3.94L25.9.83a3.505,3.505,0,0,1,4.54.009Q42.8,12.473,55.171,24.107C56.81,25.662,55.43,28.039,52.89,28.039Z"
                             style="fill: inherit;" /></g></svg>
-                
+                </a>
             </span>
-            <span class="active-page"><svg class="svg-icon" xmlns="http://www.w3.org/2000/svg"
+            <span class="active-page"><a href="{% url 'friend:friend' %}"><svg class="svg-icon" xmlns="http://www.w3.org/2000/svg"
                     xmlns:xlink="http://www.w3.org/1999/xlink"
                     preserveAspectRatio="xMidYMid meet" version="1.0"
                     viewBox="24.0 30.5 53.0 60.1" zoomAndPan="magnify"
@@ -50,7 +51,7 @@
                     original_string_length="795" width="48.42822175859445px"
                     height="54.805600755611px"><g id="__id3_szw24o237"><path
                             d="m48.8 40.9c3.3 2.1 5.6 5.6 6 9.6 1.3 0.6 2.8 1 4.4 1 5.8 0 10.5-4.7 10.5-10.5s-4.7-10.5-10.5-10.5c-5.7 0.1-10.4 4.7-10.4 10.4zm-6.9 21.4c5.8 0 10.5-4.7 10.5-10.5s-4.7-10.5-10.5-10.5-10.5 4.7-10.5 10.5 4.7 10.5 10.5 10.5zm4.4 0.7h-8.9c-7.4 0-13.4 6-13.4 13.4v11.1l0.7 0.2c7 2.2 13.2 2.9 18.2 2.9 9.8 0 15.5-2.8 15.9-3l0.7-0.4h0.1v-10.8c0.1-7.4-5.9-13.4-13.3-13.4zm17.3-10.8h-8.8c-0.1 3.5-1.6 6.7-4 9 6.6 2 11.4 8 11.4 15.2v3.3c8.7-0.3 13.7-2.8 14-2.9l0.7-0.4h0.1v-10.8c0-7.4-6-13.4-13.4-13.4z"
-                            style="fill: inherit;" /></g></svg>
+                            style="fill: inherit;" /></g></svg></a>
   
                     <svg class="active-pointer"
                     style="stroke: rgb(255, 255, 255); fill: rgb(255, 255, 255); width: 22px; height: 3px;"><path
@@ -134,9 +135,9 @@
                         id="__id17_szw24o237"><path
                             d="M23 44c2.21 0 4-1.79 4-4h-8c0 2.21 1.79 4 4 4zm13-12v-11c0-6.15-4.27-11.28-10-12.64v-1.36c0-1.66-1.34-3-3-3s-3 1.34-3 3v1.36c-5.73 1.36-10 6.49-10 12.64v11l-4 4v2h34v-2l-4-4z"
                             style="fill: inherit;" /></g></svg></span>
-            <span><img
-                    src="{%static 'profileinfo/image/dummyprofile.webp' %}"
-                    class="image-icon-rounded"></span>
+            <span><a href="{% url 'profileinfo:post' request.user.id %}"><img
+                    src="{{ request.user.profile.image.url }}"
+                    class="image-icon-rounded"></a></span>
         </div>
     </nav>
     <div class="box">

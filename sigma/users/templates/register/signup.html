@@ -20,18 +20,19 @@
             </div>
         </div>
     <div class="jendela">
-        <form action="" class="form">
-                <input type="text" class="input" name="" id="" placeholder="Username" >
-                <input type="email" class="input" name="" id="" placeholder="Email" >
-                <input type="password" class="input" name="" id="" placeholder="Password" >
-                <input type="password" class="input" name="" id="" placeholder="Password confirmation" >
+        <form method="POST" action="" class="form">
+                {% csrf_token %}
+                <input type="text" class="input" name="username" id="" placeholder="Username" >
+                <input type="email" class="input" name="email" id="" placeholder="Email" >
+                <input type="password" class="input" name="password" id="" placeholder="Password" >
+                <input type="password" class="input" name="passwordConfirm" id="" placeholder="Password confirmation" >
             <div>
                 <p style="font-family: poppins, sans-serif;"><strong>Date of birth</strong></p>
-                <input type="number" class="date" placeholder="day" min="1" max="31">
-                <input type="number" class="date" placeholder="month" min="1" max="12">
-                <input type="number" class="date" placeholder="year" max="2024">
+                <input type="number" class="date" name="date" placeholder="day" min="1" max="31">
+                <input type="number" class="date" name="month" placeholder="month" min="1" max="12">
+                <input type="number" class="date" name="year" placeholder="year" max="2024">
             </div>
-            <button class="button"><strong> sign me up </strong></button>
+            <button type="submit" class="button"><strong>sign me up</strong></button>
         </form>
     </div>
     
