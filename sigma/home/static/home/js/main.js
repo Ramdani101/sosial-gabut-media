@@ -95,6 +95,7 @@ document.addEventListener("DOMContentLoaded", function () {
           },
         });
         const data = await response.json();
+        const username = data.post.username;
         document.querySelector("#show-date").innerText = data.post.pub_date;
         document.querySelector("#show-konten p").innerText = data.post.konten;
         document.querySelector("#show-total-like").innerText =
@@ -103,6 +104,9 @@ document.addEventListener("DOMContentLoaded", function () {
           data.post.total_comment;
         document.querySelector("#show-total-share").innerText =
           data.post.total_share;
+        document.querySelector("#show-username").innerText = username;
+        document.querySelector("#show-username-title").innerText = username + (username.endsWith("s") ? "'" : "'s") + " post";
+        document.querySelector("#show-profile").src = data.post.profile_image;
 
         const container = document.getElementById("comment-list");
         container.innerHTML = "";
@@ -111,12 +115,12 @@ document.addEventListener("DOMContentLoaded", function () {
           commentCard.classList.add("comment-data");
           commentCard.innerHTML = `
                   <img
-                    src="/static/home/image/dummyprofile.webp"
+                    src=${comment.profile_image}"
                     class="image-icon-rounded"
                   />
                   <div class="comment-card">
                     <div class="comment-profile">
-                      <h1>Davidis</h1>
+                      <h1>${comment.username}</h1>
                       <p>${comment.pub_date}</p>
                     </div>
                     <p>${comment.komentar}</p>

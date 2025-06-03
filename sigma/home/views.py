@@ -103,12 +103,16 @@ def get_post_comment(request, id):
                     "pub_date": post.pub_date.strftime("%Y-%m-%d %H:%M"),
                     "total_like": total_like,
                     "total_comment": total_comments,
+                    "username": post.user.username,
+                    "profile_image": post.user.profile.image.url,
                 },
                 "comments": [
                     {
                         "komentar": comment.komentar,
-                        "user_id": comment.user_id,
+                        "user_id": comment.user.id,
                         "pub_date": comment.pub_date.strftime("%Y-%m-%d %H:%M"),
+                        "username": comment.user.username,
+                        "profile_image": comment.user.profile.image.url,
                     }
                     for comment in comments
                 ],
@@ -125,7 +129,7 @@ def comment_post(request, id):
         body_data = json.loads(body_unicode)            
         komentar = body_data.get('komentar') 
         post = get_object_or_404(Postingan, id=id)
-        comment = Komentar.objects.create(user_id=1, post_id=post, komentar=komentar, pub_date=timezone.now())
+        comment = Komentar.objects.create(user=request.user, post_id=post, komentar=komentar, pub_date=timezone.now())
         post.total_share += 1
         post.save()
         comment.save()
@@ -136,7 +140,9 @@ def comment_post(request, id):
                 "comments": [
                     {
                         "komentar": comment.komentar,
-                        "user_id": comment.user_id,
+                        "user_id": comment.user.id,
+                        "username": comment.user.username,
+                        "profile_image": comment.user.profile.image.url,
                         "pub_date": comment.pub_date.strftime("%Y-%m-%d %H:%M"),
                     }
                     for comment in commentsData
