@@ -1,5 +1,4 @@
-import datetime
-
+import datetime                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
 from django.contrib.auth.models import User
 from django.db import models
 from django.utils import timezone
@@ -11,7 +10,7 @@ class Postingan(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     uploader_name = models.CharField(max_length=150, blank=True)
     uploader_image = models.ImageField(upload_to='post_uploader_images', blank=True, null=True)
-    created_at = models.DateTimeField(auto_now_add=True)
+    created_at = models.DateTimeField(auto_now_add=True)                                                              
     konten = models.TextField()
     total_share = models.IntegerField(default=0)
     pub_date = models.DateTimeField("date published")
@@ -36,7 +35,7 @@ class Postingan(models.Model):
 class Komentar(models.Model):
     post_id = models.ForeignKey(Postingan, on_delete=models.CASCADE, related_name='comments')
     komentar = models.TextField()
-    user_id = models.IntegerField()
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     pub_date = models.DateTimeField("date published")
     
 

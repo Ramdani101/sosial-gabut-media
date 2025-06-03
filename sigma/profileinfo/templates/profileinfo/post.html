@@ -8,9 +8,9 @@
 </form>
 {% endblock active %}
 {% block content %}
-{%for post in user_posts %}
 <div class="center-container">
   <div class="post-container">
+    {%for post in user_posts %}
     <div class="post-edit">
       <p></p>
       <p></p>
@@ -127,7 +127,7 @@
         <p class="post-share-counter">{{post.total_share}}</p>
       </form>
     </div>
+    {%endfor%}
   </div>
-  {%endfor%}
 </div>
 {% endblock content %}

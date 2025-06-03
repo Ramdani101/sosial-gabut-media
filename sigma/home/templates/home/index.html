@@ -697,7 +697,7 @@
 
     <div id="comment-post" class="display-none detail-card">
       <div class="detail-title">
-        <h1>Aristoteles's Post</h1>
+        <h1 id="show-username-title"></h1>
       </div>
       <div class="detail-post">
         <div class="post-container">
@@ -708,11 +708,11 @@
           </div>
           <div class="post-profile">
             <img
-              src="{%static 'home/image/dummyprofile.webp' %}"
+              id="show-profile"
               class="image-icon-rounded"
             />
             <div class="post-data">
-              <h1 class="post-name">Aristoteles</h1>
+              <h1 id="show-username" class="post-name"></h1>
               <p id="show-date" class="post-time"></p>
               <!-- Tempat ditaruh post pub_date -->
             </div>
@@ -788,7 +788,7 @@
       >
         {% csrf_token %}
         <img
-          src="{%static 'home/image/dummyprofile.webp' %}"
+          src="{{ request.user.profile.image.url }}"
           class="image-icon-rounded"
         />
         <input type="text" name="komentar" id="komentar-input" class="dm-input" placeholder="Type something" />
